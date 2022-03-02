@@ -1,0 +1,27 @@
+Use mtcars.
+
+Exercise 1
+Print out the hp column using the select() function. 
+
+Exercise 2
+Print out all but the hp column using the select() function.
+
+Exercise 3
+Print out the mpg, hp, vs, am, gear columns. Consider using the colon : symbol to simplfy selection of consecutive columns.
+
+Exercise 4
+Create a new variable in the mycars data frame km_per_litre using the mutate() function. Hint: 1 mpg is 0.425 km/l.
+
+Excercise 5
+Transform all columns from mtcars to character. Consider using mutate_all. If you have dplyr1.0.0 try using mutate+across.
+
+Excercise 6
+Display mtcars mean and median for mpg, hp and consumption.
+
+Excercise 7
+Identify the worst and best economic car. 
+
+
+
+
+
