@@ -1,0 +1,19 @@
+Exercise 1
+
+Create a function to print square of number
+
+Exercise 2
+
+Create a function to print a number raise to another with the one argument a default argument
+
+Exercise 3
+
+Create a function to print class of an argument
+
+Exercise 4
+
+Create a function that given a vector and an integer will return how many times the integer appears inside the vector.
+
+Exercise 5
+
+Create a function that given an integer will calculate how many divisors it has (other than 1 and itself). Make the divisors appear on screen.
