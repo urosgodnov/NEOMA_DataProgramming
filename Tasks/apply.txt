@@ -1,0 +1,75 @@
+Excercise 1
+a. Get the following matrix of 5 rows and call it ‘mymatrix’:
+mymatrix = matrix(data = c(6,34,923,5,0, 112:116, 5,9,34,76,2, 545:549), nrow = 5)
+
+b. Get the mean of each row
+#expected result
+ 
+[1] 167.00 175.50 404.50 186.00 166.75
+
+c. Get the mean of each column
+
+#expected result
+ 
+[1] 193.6 114.0 25.2 547.0
+
+
+Excercise 2
+Use ‘lapply’ on a data.frame ‘mtcars’
+
+a. Use three ‘apply’ family functions to get the minimum values of each column of the ‘mtcars’ dataset. Store each output in a separate object (‘l’, ‘s’, ‘m’) and get the outputs.
+
+
+#expected result
+ 
+>l
+$mpg
+[1] 10.4
+ 
+$cyl
+[1] 4
+ 
+$disp
+[1] 71.1
+ 
+$hp
+[1] 52
+ 
+$drat
+[1] 2.76
+ 
+$wt
+[1] 1.513
+ 
+$qsec
+[1] 14.5
+ 
+$vs
+[1] 0
+ 
+$am
+[1] 0
+ 
+$gear
+[1] 3
+ 
+$carb
+[1] 1
+ 
+>s
+   mpg   cyl   disp     hp  drat    wt   qsec    vs    am  gear  carb 
+10.400 4.000 71.100 52.000 2.760 1.513 14.500 0.000 0.000 3.000 1.000
+ 
+>m
+   mpg   cyl   disp     hp  drat    wt   qsec    vs    am  gear  carb 
+10.400 4.000 71.100 52.000 2.760 1.513 14.500 0.000 0.000 3.000 1.000 
+
+b. Put the three outputs ‘l’, ‘s’, ‘m’ in the list ‘listobjects’.
+
+c. Use a suitable ‘apply’ function to get the class of each of the three list elements in ‘listobjects’
+
+
+
+
+
+
