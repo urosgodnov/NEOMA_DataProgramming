@@ -1,0 +1,37 @@
+Let’s create a variable called text1 and populate it with the value 	
+
+Exercise 1
+Create a variable called my_pattern and implement the required pattern for finding any digit in the variable text1.
+Use function grepl to verify if there is a digit in the string variable
+
+Exercise 2
+Use function gregexpr to find all the positions in text1 where there is a digit.
+Place the results in a variable called string_position.
+
+Exercise 3
+Create a variable called my_pattern and implement the required pattern for finding one digit and one uppercase alphanumeric character, in variable text1.
+
+Exercise 4
+Use function regexpr to find the position of the first space in text1.
+Place the results in a variable called first_space.
+
+Exercise 5
+Create a pattern that checks in text1 if there is a lowercase character, followed by any character and then by a digit.
+
+Exercise 6
+Find the starting position of the above string. Place the results in a variable called string_pos2.
+
+Exercise 7
+Find the following pattern: one space followed by two lowercase letters and one more space.
+Use a function that returns the starting point of the found string and place its result in string_pos3.
+
+Exercise 8
+Using the sub function, replace the pattern found on the previous exercice by the string ” is not ”
+Place the resulting string in text2 variable.
+
+Exercise 9 
+Find in text2 the following pattern: Four digits starting at the end of the string.
+Use a function that returns the starting point of the found string and place its result in string_pos4.
+
+Exercise 10
+Using the substr function, and according to the position of the string found in the previous excercise, extract the first two digits found at the end of text2.
