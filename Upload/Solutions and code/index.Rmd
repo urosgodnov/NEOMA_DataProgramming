@@ -1,0 +1,57 @@
+---
+title: "HA1"
+output: 
+  html_document: 
+    toc: yes
+    toc_float: yes
+    number_sections: yes
+    theme: yeti
+    code_folding: hide
+date: '2022-03-07'
+params:
+  number_of_rows: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE, dpi=100, error=TRUE)
+```
+
+
+## Take the settings from global settings
+
+```{r}
+
+head(airquality, params$number_of_rows)
+
+```
+
+## Showing a few lines
+
+```{r echo=FALSE}
+library(tidyverse)
+
+mtcars |> head()
+```
+
+## again global settings
+
+```{r}
+head(airquality)
+```
+
+## sqrt
+
+```{r }
+sqrt("a")
+```
+
+
+
+## plotting
+
+```{r}
+df<-mtcars %>% dplyr::select(mpg, wt)
+
+plot(df)
+```
+
