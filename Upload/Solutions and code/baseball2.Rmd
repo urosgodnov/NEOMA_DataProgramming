@@ -1,0 +1,39 @@
+---
+title: "Baseball2"
+output: html_document
+date: '2022-03-28'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(knitr)
+library(tidyverse)
+
+```
+
+## Importing data
+
+```{r}
+master<-read.csv("./Baseball/core/Master.csv")
+master %>% as_tibble()
+fielding<-read.csv("./Baseball/core/FieldingOF.csv")
+fielding %>% as_tibble()
+
+```
+
+
+## Joing data
+
+```{r}
+master %>% 
+  select(playerID,nameFirst, nameLast) %>% 
+  inner_join(fielding %>% select(playerID, yearID, Gcf), by="playerID") %>% 
+  dplyr::filter(yearID %in% 1945:1955) %>% 
+  group_by(yearID, playerID) %>% 
+  arrange(desc(Gcf)) %>% 
+  mutate(id=row_number()) %>% 
+  dplyr::filter(id==2) %>% 
+  arrange(yearID)
+```
+
