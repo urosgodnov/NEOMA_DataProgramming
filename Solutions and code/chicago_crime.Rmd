@@ -1,0 +1,36 @@
+---
+title: "Chicago crime"
+author: "Uros Godnov"
+date: "2023-01-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+library(readxl)
+library(DT)
+library(tidyverse)
+library(janitor)
+
+
+data<-read_excel("C:/Work/NEOMA_group 1/Chicago_small.xlsx") %>% clean_names()
+```
+
+
+## Initial data presentation
+
+```{r}
+datatable(data)
+```
+
+## Arrests by primary type of a crime
+
+```{r}
+data %>% 
+  select(primary_type, arrest) %>% 
+  group_by(primary_type) %>% 
+  summarise(Number_of_arrests=sum(arrest)) %>% 
+  arrange(desc(Number_of_arrests)) %>% 
+  datatable()
+```
+

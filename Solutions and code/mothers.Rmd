@@ -1,0 +1,101 @@
+---
+title: "Mothers"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+  word_document:
+    toc: yes
+date: '2022-03-30'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, error = TRUE)
+
+library(tidyverse)
+library(sjPlot)
+library(readxl)
+library(knitr)
+library(skimr)
+library(PerformanceAnalytics)
+library(arsenal)
+library(janitor)
+```
+
+
+## Data import and EDA
+
+```{r}
+mother<-read_excel("./Tasks/mothers.xlsx", sheet=1)
+newborn<-read_excel("./Tasks/mothers.xlsx", sheet=3)
+milk<-read_excel("./Tasks/mothers.xlsx", sheet=4)
+```
+
+### Mother
+
+```{r}
+skim(mother)
+```
+
+### Newborn
+
+```{r}
+skim(newborn)
+```
+
+### Milk
+
+```{r}
+skim(milk)
+```
+
+## Relationship between mother's age and milk in general
+
+```{r}
+df<-mother %>% select("ID (M)","age") %>% 
+  rename("ID"="ID (M)") %>% 
+  inner_join(milk) %>% 
+  clean_names() %>% 
+  select(-c(date_of_sample, date_of_birth)) %>% 
+  group_by(id,age) %>% 
+  summarise(across(.fns=mean)) %>% 
+  ungroup() %>% 
+  select(-id)
+
+
+chart.Correlation(df)
+
+```
+## Difference in milk ingridenets according to newborn's gender
+
+```{r results='asis'}
+dfGender<-newborn %>% clean_names() %>% 
+  select(id_i, gender) %>% 
+  rename("id"="id_i") %>% 
+  inner_join(milk %>% clean_names(), by="id") %>%    select(-c(date_of_sample, date_of_birth)) %>% 
+  group_by(id,gender) %>% 
+  summarise(across(.fns=mean)) %>% 
+  ungroup() %>% 
+  select(-id) 
+  
+
+my_controls <- tableby.control(
+  test = T,
+  total = T,
+  numeric.test = "anova", cat.test = "chisq",
+  numeric.stats = c("meansd", "medianq1q3", "range"),
+  cat.stats = c("countpct"),
+  conf.level = 0.95,
+  stats.labels = list(
+    meansd = "Mean (SD)",
+    medianq1q3 = "Median (Q1, Q3)",
+    range = "Min - Max"
+  )
+)
+
+
+tab.noby <- tableby(gender~ ., data=dfGender, total=FALSE, control=my_controls)
+summary(tab.noby, digits=2, digits.p=3, digits.pct=1)
+
+```
+

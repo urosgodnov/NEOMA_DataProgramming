@@ -1,0 +1,24 @@
+---
+title: "Animation"
+output: html_document
+date: '2022-03-30'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gganimate)
+library(tidyverse)
+```
+
+## Unemployment
+
+```{r}
+
+
+ggplot(economics, aes(x = date, y = unemploy)) + 
+  geom_line()+
+  theme_minimal()+
+  transition_reveal(along = date)
+```
+
+
